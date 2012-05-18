@@ -54,9 +54,19 @@
           exterieur = Nombre_Equipes -1
         FIN SI        
         
+        // Pour les journées impaires lon intervetit l'ordre domicile exterieur
         
-        Liste_Matchs[k, 1]  <------- domicile
-        Liste_Matchs[k, 2]  <------- exterieur
+        SI (i%2)==1 && j==0 ALORS
+        
+          Liste_Matchs[k, 1]  <------- exterieur
+          Liste_Matchs[k, 2]  <------- domicile
+          
+        SINON
+
+          Liste_Matchs[k, 1]  <------- domicile
+          Liste_Matchs[k, 2]  <------- exterieur        
+        
+        FIN SI
         
         k <---- k +1
         
@@ -131,6 +141,11 @@ int main (int argc, char *argv[])
     } // end for loop
   } // end for loop
   
+  
+  /**
+   * Algorithme d'affichage
+   *
+   */
   for (i = 0; i < Nombre_Journees; i += 1) // start for loop
   {
   
@@ -142,6 +157,7 @@ int main (int argc, char *argv[])
       k = Journees[i][j];
       
       printf("%d#%d ", Matchs[k][0], Matchs[k][1]);
+      
     } // end for loop
     
     printf("\n");
